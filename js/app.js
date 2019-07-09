@@ -9,7 +9,7 @@ let getWeather = function (event) {
     console.log('check city value =', event.target[0].value);
 
     var city = event.target[0].value;
-    const url = `${ROOT_URL}${WEATHER_KEY}&q=${city}`;
+    const url = `${ROOT_URL}${keys.openWeather}&q=${city}`;
 
     fetch(url).then(function (response) {
             return response.json();
