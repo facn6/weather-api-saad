@@ -10,9 +10,13 @@ function generateResultsList(weather) {
     return weather.list.map(function (item) {
         itemNum++;
         return ('<div id="item-num-' + itemNum + '" class="weather-item">'
+                + '<div class="item-date">'
+                    + '<h6 class="item-date-title">Date</h6>'
+                    + '<p class="item-date-text">' + item.dt_txt.split(' ')[0] + '</p>'
+                + '</div>'
                 + '<div class="item-time">'
                     + '<h6 class="item-time-title">Time</h6>'
-                    + '<p class="item-time-text">' + item.dt_txt + '</p>'
+                    + '<p class="item-time-text">' + item.dt_txt.split(' ')[1].slice(0,5) + '</p>'
                 + '</div>'
                 + '<div class="item-temp">'
                     + '<h6 class="item-temp-title">Temp</h6>'
@@ -30,7 +34,8 @@ function updateWeather(weather) {
 
     const location = weather.city.name + ", " + weather.city.country;
     const result = weather.list[0];
-    const time = result.dt_txt;
+    const date = result.dt_txt.split(' ')[0];
+    const time = result.dt_txt.split(' ')[1].slice(0,5);
     const message = result.weather[0].description;
     const currTemp = result.main.temp;
     const minTemp = result.main.temp_min;
@@ -39,6 +44,7 @@ function updateWeather(weather) {
     const wind = result.wind.speed;
 
     document.getElementById("location-result").innerHTML = location;
+    document.getElementById("main-date").innerHTML = date;
     document.getElementById("main-time").innerHTML = time;
     document.getElementById("main-message").innerHTML = message;
     document.getElementById("main-temp").innerHTML = currTemp;
@@ -59,14 +65,12 @@ function getWeather(event) {
     if (!reg.test(city)) {
         showValidityError(event);
     } else {
-        console.log(event);
-
-        const url = `${WEATHER_URL}${keys.WEATHER_KEY}&q=${city}&units=metric`;
-
-        fetch(url).then(function (response) {
+        fetch(`${WEATHER_URL}${keys.WEATHER_KEY}&q=${city}&units=metric`)
+            .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
+                document.getElementById("results-container").style.display = 'block';
                 updateWeather(data);
                 console.log(data);
             })
