@@ -46,7 +46,7 @@ body {
 
 .main-result, .weather-item {
     padding: 20px;
-    box-shadow: 0 4px 0 4px rgba(67, 67, 67, 0.297);
+    box-shadow: 0 2px 0 2px rgba(67, 67, 67, 0.297);
     border-radius: 10px;
 }
 
@@ -59,10 +59,8 @@ body {
 .weather-item {
     min-width: 200px;
     margin: 20px;
-    background-color: rgb(34, 51, 83)
-}
-.error-message {
-    color: rgb(250, 7, 7);
+    /* background-color: #91F5AD */
+    background-color: rgb(33, 79, 35)
 }
 
 .main-description{
@@ -88,13 +86,12 @@ body {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-
 }
 
 
-
-
-
-
-
+.current {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
 
