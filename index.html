@@ -10,19 +10,25 @@
 <body>
     <main>
 
-        <form id="search-form">
-            <label for="search-location">Search location: </label>
-            <input id="search-input" type="text" name="location" value=""
-                placeholder="City, Country code - (London, UK)" pattern="([A-z]+),*\s*([A-z]{1,2})?">
-            <p id="search-error" class="hidden"></p>
-            <input type="submit">
+        <form id="search-form" >
+            <div class="header">
+                <div class="label-search">
+                    <label for="search-input">Search location: </label>
+                </div>
+                <input class="input-search" id="search-input" type="text" name="location" value=""
+                        placeholder="City, Country code - (Haifa, IL)" pattern="([A-z]+),*\s*([A-z]{1,2})?">
+                <input type="submit">
+            </div>  
+            <div class="error-message">
+                <p id="search-error" class="hidden"></p>
+            </div>
         </form>
 
         <div class="results-container">
 
             <h2 id="location-result"></h2>
             <div class="main-result">
-                <h4 id="main-time"></h2>
+                <h4 id="main-time"></h4>
                 <h4 id="main-message"></h4>
                 <div>
                     <h6>Temperature</h6>
