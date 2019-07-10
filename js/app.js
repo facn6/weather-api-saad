@@ -3,6 +3,7 @@ const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
 const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
 let weather = {};
+const icon_url="http://openweathermap.org/img/wn/"
 
 function generateResultsList() {
     return weather.list.map(function (item, index) {
