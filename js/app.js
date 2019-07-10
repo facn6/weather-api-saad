@@ -2,7 +2,7 @@ const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
 
 const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
-
+const icon_url="http://openweathermap.org/img/wn/"
 
 function generateResultsList(weather) {
     let itemNum = -1;
@@ -37,6 +37,7 @@ function updateWeather(weather) {
     const date = result.dt_txt.split(' ')[0];
     const time = result.dt_txt.split(' ')[1].slice(0,5);
     const message = result.weather[0].description;
+    const icon = result.weather[0].icon;
     const currTemp = result.main.temp;
     const minTemp = result.main.temp_min;
     const maxTemp = result.main.temp_max;
@@ -52,6 +53,7 @@ function updateWeather(weather) {
     document.getElementById("max-temp").innerHTML = maxTemp;
     document.getElementById("humidity").innerHTML = humidity;
     document.getElementById("wind").innerHTML = wind;
+    document.getElementById("icon").src = icon_url + icon + "@2x.png";
 
     document.getElementById("results-list").innerHTML = generateResultsList(weather)
 }
