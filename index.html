@@ -17,30 +17,30 @@
                 </div>
                 <input class="input-search" id="search-input" type="text" name="location" value=""
                         placeholder="City, Country code - (Haifa, IL)" pattern="([A-z]+),*\s*([A-z]{1,2})?">
-                <input type="submit">
+                <input class="button-search" type="submit">
             </div>  
             <div class="error-message">
                 <p id="search-error" class="hidden"></p>
             </div>
         </form>
 
-        <div class="results-container">
+        <div id="results-container">
 
             <h2 id="location-result"></h2>
             
             <div class="main-result">
-                <div class="main-spaces">
-                    <h4 id="main-time"></h4>
-                </div>
+
+                <h4 id="main-date"></h4>
+                <h4 id="main-time"></h4>
                 <div class="main-description main-spaces" >
                     <h4 id="main-message"></h4>
                     <img id="icon"/>
                 </div>
                 <div class="sub-title-card">
                     <h6>Temperature</h6>
-                    <p id="main-temp"></p>
-                    <p id="min-temp"></p>
-                    <p id="max-temp"></p>
+                    <div class="temperture-flex"><p id="main-temp"></p><p>&#8451;</p></div>
+                    <div class="temperture-flex"><p id="min-temp"></p><p>&#8451;</p></div>
+                    <div class="temperture-flex"><p id="max-temp"></p><p>&#8451;</p></div>
                 </div>
                 <div class="sub-title-card">
                     <h6>Humidity</h6>
