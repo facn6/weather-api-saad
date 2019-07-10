@@ -4,6 +4,28 @@ const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
 
 
+function generateResultsList(weather) {
+    let itemNum = -1;
+
+    return weather.list.map(function (item) {
+        itemNum++;
+        return ('<div id="item-num-' + itemNum + '" class="weather-item">'
+                + '<div class="item-time">'
+                    + '<h6 class="item-time-title">Time</h6>'
+                    + '<p class="item-time-text">' + item.dt_txt + '</p>'
+                + '</div>'
+                + '<div class="item-temp">'
+                    + '<h6 class="item-temp-title">Temp</h6>'
+                    + '<p class="item-temp-text">' + item.main.temp + '</p>'
+                + '</div>'
+                + '<div class="item-message">'
+                    + '<h6 class="item-message-title">Outlook</h6>'
+                    + '<p class="item-message-text">' + item.weather[0].description + '</p>'
+                + '</div>' +
+                '</div>')
+    }).join('');
+}
+
 function updateWeather(weather) {
 
     const location = weather.city.name + ", " + weather.city.country;
@@ -25,6 +47,7 @@ function updateWeather(weather) {
     document.getElementById("humidity").innerHTML = humidity;
     document.getElementById("wind").innerHTML = wind;
 
+    document.getElementById("results-list").innerHTML = generateResultsList(weather)
 }
 
 function getWeather(event) {
@@ -37,7 +60,6 @@ function getWeather(event) {
         showValidityError(event);
     } else {
         console.log(event);
-        console.log('check city value =', city);
 
         const url = `${WEATHER_URL}${keys.WEATHER_KEY}&q=${city}&units=metric`;
 
