@@ -1,7 +1,6 @@
 
 
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
-const GOOGLE_MAPS_URL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJVssKQzekpNKXWEL1VlME9wVlQUi_W9A&libraries=places&callback=initAutocomplete";
 
 let getWeather = function (event) {
     event.preventDefault();
@@ -10,6 +9,7 @@ let getWeather = function (event) {
 
     var city = event.target[0].value;
     const url = `${WEATHER_URL}${keys.WEATHER_KEY}&q=${city}`;
+    
 
     fetch(url).then(function (response) {
             return response.json();
@@ -22,5 +22,6 @@ let getWeather = function (event) {
         });
 };
 
+
 const input = document.getElementById("search-input")
-input.addEventListener("submit", getWeather)
+input.addEventListener("submit", getWeather);
