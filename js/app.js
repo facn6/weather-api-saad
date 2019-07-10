@@ -1,5 +1,4 @@
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
-const GOOGLE_MAPS_URL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCJVssKQzekpNKXWEL1VlME9wVlQUi_W9A&libraries=places&callback=initAutocomplete";
 
 const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
