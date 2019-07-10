@@ -10,8 +10,10 @@
 <body>
     <main>
 
-        <form id="search-input">
-            Enter location: <input type="text">
+        <form id="search-form">
+            <label for="search-location">Search location: </label>
+            <input id="search-input" type="text" name="location" value="" placeholder="City, Country code - (London, UK)" pattern="([A-z]+),*\s*([A-z]{1,2})?">
+            <p id="search-error" class="hidden"></p>
             <input type="submit">
         </form>
 
