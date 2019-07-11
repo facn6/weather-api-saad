@@ -1,14 +1,36 @@
 body {
     text-align: center;
-    /* background-color: rgb(31, 41, 38); */
+    background-color: rgb(31, 41, 38);
     background-image: url("https://images.unsplash.com/photo-1505322022379-7c3353ee6291?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
-    color:rgb(255,255,255);
+    color: rgb(255, 255, 255);
     font-size: 1.4rem;
 }
 
-.button-search{
+
+h4,
+h6,
+p {
+    margin: 1rem;
+    margin-inline-start: 0;
+}
+
+p {
+    font-size: 1rem;
+}
+
+span {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ------------ Search Bar ---------------- */
+
+.button-search {
     background-color: rgb(41, 69, 80);
 }
+
 .header {
     display: flex;
     flex-direction: row;
@@ -34,18 +56,27 @@ body {
 
 .main-result {
     box-shadow: 0 4px 0 4px rgba(7, 146, 111, 0.144);
-    border: 5px solid rgb(255,255,255);
+    border: 5px solid rgb(255, 255, 255);
     background-color: rgb(41, 69, 80);
-    
 }
+
 @media only screen and (min-width: 600px) {
     .main-result {
         margin: 2% 20% 4% 20%;
     }
-  }
+}
 
-.main-result, .weather-item {
-    padding: 20px;
+ 
+/* ------------ Main Result Box ---------------- */
+
+
+#icon {
+    height: 80px;
+    width: 80px;
+}
+
+.main-result,
+.weather-item {
     box-shadow: 0 2px 0 2px rgba(67, 67, 67, 0.297);
     border-radius: 10px;
 }
@@ -56,36 +87,25 @@ body {
     flex-direction: row;
     justify-content: center;
 }
+
 .weather-item {
+    padding: 20px;
     min-width: 200px;
     margin: 20px;
-    /* background-color: #91F5AD */
     background-color: rgb(33, 79, 35)
 }
 
-.main-description{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    
-}
-
-.weather-icon{
+.weather-icon {
     margin-left: 20%;
-    margin-bottom:50%;
+    margin-bottom: 50%;
 }
 
-.sub-title-card{
-    box-shadow: 0 1px 0 1px rgba(85, 121, 112, 0.144);
-    border: 5px solid rgb(255,255,255);
-    margin: 10% 30% 0 30%;
-}
-
-.temperture-flex{
+.main-details {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+}
+
+.sub-title-card {
+    flex: 1;
 }
 
 
@@ -93,5 +113,4 @@ body {
     transform: scale(1.1);
     border-color: #ffc600;
     box-shadow: 0 0 1rem #ffc600;
-  }
-
+}

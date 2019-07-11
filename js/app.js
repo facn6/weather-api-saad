@@ -6,18 +6,13 @@ let weather = {};
 const icon_url="http://openweathermap.org/img/wn/"
 
 function generateResultsList() {
+    let date = result.dt_txt.split(' ');
     return weather.list.map(function (item, index) {
         return ('<div id="item-num-' + index + '" class="weather-item" >'
                 + '<div class="item-date">'
-                    + '<h6 class="item-date-title">Date</h6>'
-                    + '<p class="item-date-text">' + item.dt_txt.split(' ')[0] + '</p>'
-                + '</div>'
-                + '<div class="item-time">'
-                    + '<h6 class="item-time-title">Time</h6>'
-                    + '<p class="item-time-text">' + item.dt_txt.split(' ')[1].slice(0,5) + '</p>'
+                    + '<p class="item-date-text">' + date[0] + "  -  " + date[1].slice(0,5) + '</p>'
                 + '</div>'
                 + '<div class="item-temp">'
-                    + '<h6 class="item-temp-title">Temp</h6>'
                     + '<p class="item-temp-text">' + item.main.temp + '</p>'
                 + '</div>'
                 + '<div class="item-message">'
@@ -29,15 +24,14 @@ function generateResultsList() {
 }
 
 function updateMainData(result) {
-    document.getElementById("main-date").innerHTML = result.dt_txt.split(' ')[0];
-    document.getElementById("main-time").innerHTML = result.dt_txt.split(' ')[1].slice(0,5);
+    let date = result.dt_txt.split(' ');
+    document.getElementById("main-date").innerHTML = date[0] + "  -  " + date[1].slice(0,5);
     document.getElementById("main-message").innerHTML = result.weather[0].description;
-    document.getElementById("main-temp").innerHTML = result.main.temp;
+    document.getElementById("main-temp").innerHTML = 'Temp: ' + result.main.temp + ' &#8451';
     document.getElementById("icon").src = icon_url + result.weather[0].icon + "@2x.png";
-    document.getElementById("min-temp").innerHTML = result.main.temp_min;
-    document.getElementById("max-temp").innerHTML = result.main.temp_max;
-    document.getElementById("humidity").innerHTML = result.main.humidity;
-    document.getElementById("wind").innerHTML = result.wind.speed;
+    document.getElementById("temp-range").innerHTML = result.main.temp_min + " - " + result.main.temp_max + ' &#8451';
+    document.getElementById("humidity").innerHTML = result.main.humidity + " %";
+    document.getElementById("wind").innerHTML = result.wind.speed + " mph";
 }
 
 function changeMain(e) {
