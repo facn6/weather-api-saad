@@ -1,15 +1,17 @@
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
+const icon_url="http://openweathermap.org/img/wn/"
 
 const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
+
 let weather = {};
-const icon_url="http://openweathermap.org/img/wn/"
+
 
 function generateResultsList() {
     return weather.list.map(function (item, index) {
         let date = item.dt_txt.split(' ');
         return ('<div id="item-num-' + index + '" class="weather-item" >'
-                + '<img id="icon" src="' +icon_url + item.weather[0].icon + '@2x.png"/>'
+                + '<img class="icon" src="' +icon_url + item.weather[0].icon + '@2x.png"/>'
                 + '<div class="item-message">'
                     + '<h5 class="item-message-text">' + item.weather[0].description + '</h5>'
                 + '</div>'
@@ -28,10 +30,19 @@ function updateMainData(result) {
     document.getElementById("main-date").innerHTML = date[1].slice(0,5) + "  -  " + date[0];
     document.getElementById("main-message").innerHTML = result.weather[0].description;
     document.getElementById("main-temp").innerHTML = 'Temp: ' + result.main.temp + ' &#8451';
-    document.getElementById("icon").src = icon_url + result.weather[0].icon + "@2x.png";
+    document.getElementById("main-icon").src = icon_url + result.weather[0].icon + "@2x.png";
     document.getElementById("temp-range").innerHTML = result.main.temp_min + " - " + result.main.temp_max + ' &#8451';
     document.getElementById("humidity").innerHTML = result.main.humidity + " %";
     document.getElementById("wind").innerHTML = result.wind.speed + " mph";
+
+    document.getElementById("main-icon").classList.toggle('spin');
+
+    let mainBox = document.getElementById("main-result");
+    mainBox.style.borderColor = 'rgb(54, 196, 182)';
+
+    setTimeout(function() {
+        mainBox.style.borderColor = 'white';
+    }, 250 );
 }
 
 function changeMain(e) {
