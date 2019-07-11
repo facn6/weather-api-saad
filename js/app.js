@@ -9,9 +9,7 @@ function generateResultsList() {
     return weather.list.map(function (item, index) {
         let date = item.dt_txt.split(' ');
         return ('<div id="item-num-' + index + '" class="weather-item" >'
-        
                 + '<img id="icon" src="' +icon_url + item.weather[0].icon + '@2x.png"/>'
-
                 + '<div class="item-message">'
                     + '<h5 class="item-message-text">' + item.weather[0].description + '</h5>'
                 + '</div>'
@@ -37,10 +35,16 @@ function updateMainData(result) {
 }
 
 function changeMain(e) {
+    let highlighted = document.getElementsByClassName("current");
+    if (highlighted.length > 0) {
+        highlighted.item(0).classList.remove("current");
+    }
+
     e.path.map(function(element) {
         if(element.className == "weather-item") {
             let itemNum = element.id.slice(9);
             updateMainData(weather.list[itemNum])
+            element.classList.add("current");
         }
     })
 }
