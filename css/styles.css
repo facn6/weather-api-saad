@@ -3,6 +3,8 @@ body {
     background-color: rgb(185, 216, 207);
     color: rgb(255, 255, 255);
     font-size: 1.4rem;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 1px 1px #5649d298;
 }
 
 #results-container {
@@ -37,7 +39,18 @@ span {
 /* ------------ Search Bar ---------------- */
 
 .button-search {
-    background-color: rgb(41, 69, 80);
+    color: white;
+    background-color: rgb(152, 114, 196);
+    border-radius: 12px;
+    font-size: 1.2rem;
+    padding: 10px;
+    outline: 0;
+    border: 0;
+}
+
+.button-search:hover {
+    transform: scale(1.03);
+    box-shadow: 0 2px 0 1px rgba(7, 146, 111, 0.144);
 }
 
 .header {
@@ -52,28 +65,30 @@ span {
 }
 
 .input-search {
-    width: 15%;
+    font-size: 1rem;
+    width: 25%;
+    margin: 0 10px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    outline: 0;
+    border: 0;
 }
 
 .error-message {
-    color: rgb(250, 7, 7);
+    color: rgb(247, 227, 3);
+    font-size: 1rem;
+    font-weight: 800;
 }
 
 
 /* ------------ Main Result Box ---------------- */
 
 .main-result {
+    transition: transform 0.5s;
     box-shadow: 0 4px 0 4px rgba(7, 146, 111, 0.144);
     border: 5px solid rgb(255, 255, 255);
     background-color: rgb(220, 185, 45);
 }
-
-@media only screen and (min-width: 600px) {
-    .main-result {
-        margin: 2% 20% 4% 20%;
-    }
-}
-
 
 #icon {
     height: 80px;
@@ -95,6 +110,9 @@ span {
     border-radius: 15px;
 }
 
+
+/* ------------ Weather Items ---------------- */
+
 #results-list {
     display: flex;
     flex-wrap: wrap;
@@ -110,10 +128,7 @@ span {
     transform: rotate(-90deg);
     transform-origin: right top;
     transform:rotate(-90deg) translateY(-290px);
-  }
-
-
-/* ------------ Weather Item Box ---------------- */
+}
 
 .weather-item {
     padding: 10px;
