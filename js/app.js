@@ -46,16 +46,19 @@ function updateMainData(result) {
 }
 
 function changeMain(e) {
+    // remove any current highlight
     let highlighted = document.getElementsByClassName("current");
     if (highlighted.length > 0) {
         highlighted.item(0).classList.remove("current");
     }
 
+    // iterate through clicked elements parents till box reached and highlight it
     e.path.map(function(element) {
         if(element.className == "weather-item") {
             let itemNum = element.id.slice(9);
             updateMainData(weather.list[itemNum])
             element.classList.add("current");
+            return;
         }
     })
 }
@@ -67,6 +70,8 @@ function updateWeather() {
     location.innerHTML = weather.city.name + ", " + weather.city.country;
     resultsList.innerHTML = generateResultsList();
     updateMainData(weather.list[0]);
+
+    resultsList.children[0].classList.add("current");
 
     for(result in resultsList.children){
         if(result < 40 ) {

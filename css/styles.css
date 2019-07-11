@@ -80,7 +80,6 @@ span {
     font-weight: 800;
 }
 
-
 /* ------------ Main Result Box ---------------- */
 
 #main-result {
@@ -98,6 +97,7 @@ span {
 .spin {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
+    transform-origin: 40% 40%;
 }
 
 .icon {
@@ -145,7 +145,7 @@ span {
     margin: 20px;
     background-color: rgb(59, 150, 141);
     transform: rotate(90deg);
-    transform-origin: right top;
+    transform-origin: 1 top;
 }
 
 .weather-item:hover {
