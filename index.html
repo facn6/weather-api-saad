@@ -12,13 +12,20 @@
 
         <form id="search-form" >
             <div class="header">
+
                 <div class="label-search">
                     <label for="search-input">Search location: </label>
                 </div>
-                <input class="input-search" id="search-input" type="text" name="location" value=""
+                <input class="input-search" id="search-input" List="countries" type="text" name="location" value=""
                         placeholder="City, Country code - (Haifa, IL)" pattern="([A-z]+),*\s*([A-z]{1,2})?">
-                <input class="button-search" type="submit">
+                        <datalist id="countries">
+                            </datalist>
+
+                        <input class="button-search" type="submit">
+
             </div>  
+            <div class="flag-icon"> <img src="" alt="" id="flag"> </div>
+
             <div class="error-message">
                 <p id="search-error" class="hidden"></p>
             </div>

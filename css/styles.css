@@ -23,7 +23,15 @@ body {
 .input-search {
     width: 15%;
 }
-
+#flag {
+    width: 20%;
+}
+.flag-icon {
+    height: 2%;
+    width: 2%;
+    border-bottom-left-radius: 25px;
+    -webkit-transform: translate(-30%, 30%);
+}
 .error-message {
     color: rgb(250, 7, 7);
 }

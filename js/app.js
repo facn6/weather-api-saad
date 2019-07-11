@@ -1,10 +1,51 @@
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
-
+const keys = {
+    WEATHER_KEY: "ca21dfe9667e871a5b4cfee4cabe100b",
+};
 const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
 let weather = {};
-const icon_url="http://openweathermap.org/img/wn/"
+let countriesArr = new Object();
 
+const icon_url="http://openweathermap.org/img/wn/"
+let currentCountry="Israel";
+let currentFlag = "https://restcountries.eu/data/isr.svg";
+//let flag=document.getElementById("flag");
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", validator);
+document.addEventListener("DOMContentLoaded", function(event) { 
+    searchInput.value=currentCountry;
+    //flag.src=currentFlag;
+    //getWeather();
+    //changeMain();
+    console.log(  getCountries());
+
+
+  });
+  searchInput.addEventListener("focus" ,function(){ searchInput.value = "";})
+   
+
+  searchInput.addEventListener("keyup", enterPressed);
+  function enterPressed(event) {
+      if (event.key === "Enter") {
+        getWeather();
+      }
+  }
+function getCountries(){
+    console.log(countriesArr)
+    const countriesUrl="https://restcountries.eu/rest/v2/all";
+    fetch(countriesUrl).then(function(response) {
+        return result=response.json();
+      }).then(function(result){
+        result.forEach(country => {
+            countriesArr[country["name"]] = country["flag"];
+            var optionElem = document.createElement("option");
+            optionElem.innerHTML = country["name"];
+            document.getElementById("countries").appendChild(optionElem);
+        });
+      })
+       
+}
 function generateResultsList() {
     return weather.list.map(function (item, index) {
         return ('<div id="item-num-' + index + '" class="weather-item" >'
@@ -73,7 +114,7 @@ function getWeather(event) {
         showValidityError(event);
     } else {
         fetch(`${WEATHER_URL}${keys.WEATHER_KEY}&q=${city}&units=metric`)
-            .then(function (response) {
+            .then(function (response) { 
                 return response.json();
             })
             .then(function (data) {
@@ -105,8 +146,7 @@ function validator(e) {
     }
 }
 
-const searchInput = document.getElementById("search-input");
-searchInput.addEventListener("input", validator);
+
 
 const searchForm = document.getElementById("search-form");
 searchForm.addEventListener("submit", getWeather);
