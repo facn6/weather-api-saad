@@ -8,6 +8,7 @@ body {
 
 #results-container {
     display: none;
+    height: 100vh;
 }
 
 /* ------------ Text Settings ---------------- */
@@ -102,6 +103,16 @@ span {
     justify-content: center;
 }
 
+#results-list  {
+    width: 280px;
+    height: 98vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    transform:rotate(-90deg) translateY(-290px);
+  }
+
 
 /* ------------ Weather Item Box ---------------- */
 
@@ -109,7 +120,9 @@ span {
     padding: 10px;
     min-width: 150px;
     margin: 20px;
-    background-color: rgb(33, 79, 35)
+    background-color: rgb(33, 79, 35);
+    transform: rotate(90deg);
+    transform-origin: right top;
 }
 
 .current {
