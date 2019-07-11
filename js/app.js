@@ -9,15 +9,17 @@ function generateResultsList() {
     return weather.list.map(function (item, index) {
         let date = item.dt_txt.split(' ');
         return ('<div id="item-num-' + index + '" class="weather-item" >'
-                + '<div class="item-date">'
-                + '<p class="item-time-text">' + item.dt_txt.split(' ')[1].slice(0,5) + '</p>'
-                    + '<p class="item-date-text">' + item.dt_txt.split(' ')[0] + '</p>'
+        
+                + '<img id="icon" src="' +icon_url + item.weather[0].icon + '@2x.png"/>'
+
+                + '<div class="item-message">'
+                    + '<h5 class="item-message-text">' + item.weather[0].description + '</h5>'
                 + '</div>'
                 + '<div class="item-temp">'
-                    + '<p class="item-temp-text">' + item.main.temp + '</p>'
+                    + '<p class="item-temp-text">' + item.main.temp + ' &#8451</p>'
                 + '</div>'
-                + '<div class="item-message">'
-                    + '<p class="item-message-text">' + item.weather[0].description + '</p>'
+                + '<div class="item-date">'
+                    + '<h6 class="item-time-text">' + date[1].slice(0,5) + ' - ' + date[0].slice(5,) + '</h6>'
                 + '</div>' +
                 '</div>')
     }).join('');
