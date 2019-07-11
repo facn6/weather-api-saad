@@ -83,10 +83,10 @@ span {
 /* ------------ Main Result Box ---------------- */
 
 #main-result {
-    transition: transform 0.5s;
     box-shadow: 0 4px 0 4px rgba(7, 146, 111, 0.144);
     border: 5px solid rgb(255, 255, 255);
     background-color: rgb(220, 185, 45);
+    margin: 6% 10%;
 }
 
 #main-icon {
@@ -118,6 +118,12 @@ span {
 .weather-item {
     box-shadow: 0 2px 0 2px rgba(67, 67, 67, 0.297);
     border-radius: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+    #main-result {
+        margin: 10% 20%;
+    }
 }
 
 /* ------------ Weather Items ---------------- */
