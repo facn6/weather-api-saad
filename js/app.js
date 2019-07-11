@@ -33,6 +33,7 @@ function updateMainData(result) {
     document.getElementById("main-time").innerHTML = result.dt_txt.split(' ')[1].slice(0,5);
     document.getElementById("main-message").innerHTML = result.weather[0].description;
     document.getElementById("main-temp").innerHTML = result.main.temp;
+    document.getElementById("icon").src = icon_url + result.weather[0].icon + "@2x.png";
     document.getElementById("min-temp").innerHTML = result.main.temp_min;
     document.getElementById("max-temp").innerHTML = result.main.temp_max;
     document.getElementById("humidity").innerHTML = result.main.humidity;
@@ -40,7 +41,7 @@ function updateMainData(result) {
 }
 
 function changeMain(e) {
-    e.path.map(function(element, ind) {
+    e.path.map(function(element) {
         if(element.className == "weather-item") {
             let itemNum = element.id.slice(9);
             updateMainData(weather.list[itemNum])
