@@ -87,35 +87,35 @@ function getWeather(event) {
     const reg = /^([A-Z]+)(\,\s*[A-Z]{2})?$/i;
 
     if (!reg.test(city)) {
-        showValidityError(event);
+        showValidityError(validityErrMsg);
     } else {
         fetch(`${WEATHER_URL}${keys.WEATHER_KEY}&q=${city}&units=metric`)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
-                document.getElementById("results-container").style.display = 'block';
-                weather = data;
-                updateWeather();
+                if ('city' in data ) {
+                    document.getElementById("results-container").style.display = 'block';
+                    weather = data;
+                    updateWeather();
+                } else {
+                    document.getElementById("results-container").style.display = 'none';
+                    showValidityError(data.message);
+                }
             })
-            .catch(function (error) {
-                console.log(error);
-            });
     }
 }
 
-function showValidityError(e) {
-    e.target.classList.add("error");
+function showValidityError(message) {
     errorElement.classList.add("error-msg");
     errorElement.classList.remove("hidden");
-    errorElement.innerHTML = validityErrMsg;
+    errorElement.innerHTML = message;
 }
 
 function validator(e) {
     if (!e.target.validity.valid) {
-        showValidityError(e);
+        showValidityError(validityErrMsg);
     } else {
-        e.target.classList.remove("error");
         errorElement.classList.remove("error-msg");
         errorElement.classList.add("hidden");
         errorElement.innerHTML = "";
