@@ -1,6 +1,8 @@
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast?appid=";
 const icon_url="http://openweathermap.org/img/wn/"
-
+const keys = {
+    WEATHER_KEY: "ca21dfe9667e871a5b4cfee4cabe100b",
+};
 const errorElement = document.getElementById("search-error");
 const validityErrMsg = "Please enter a valid location. Letters a-z, 2 letter country code optional";
 
